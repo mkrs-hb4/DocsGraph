@@ -1,0 +1,9 @@
+{
+  "name": "DocsGraph",
+  "version": "1.0.0",
+  "scripts": {
+    "start:backend": "npm run --prefix backend dev",
+    "start:frontend": "npm run --prefix frontend dev",
+    "install:all": "npm i && npm i --prefix backend && npm i --prefix frontend"
+  }
+}

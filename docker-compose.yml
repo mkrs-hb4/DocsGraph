@@ -1,0 +1,23 @@
+services:
+  gremlin-server:
+    image: tinkerpop/gremlin-server:latest
+    ports:
+      - "8182:8182"
+    environment:
+      - GREMLIN_YAML=/opt/gremlin-server/conf/gremlin-server-modern.yaml
+
+  gremlin-visualizer:
+    image: prabushitha/gremlin-visualizer:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - gremlin-server
+
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    environment:
+      - discovery.type=single-node
+      - DISABLE_SECURITY_PLUGIN=true
